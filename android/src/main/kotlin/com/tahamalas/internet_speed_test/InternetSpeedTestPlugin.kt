@@ -137,7 +137,7 @@ public class InternetSpeedTestPlugin(internal var activity: Activity, internal v
 
     private fun testUploadSpeed(testListener: TestListener, testServer: String) {
         // add a listener to wait for speedtest completion and progress
-        println("[FZ testUploadSpeed")
+        println("[FZ NEW testUploadSpeed")
         speedTestSocket.addSpeedTestListener(object : ISpeedTestListener {
             override fun onCompletion(report: SpeedTestReport) {
 //                // called when download/upload is complete
@@ -161,7 +161,7 @@ public class InternetSpeedTestPlugin(internal var activity: Activity, internal v
             }
         })
 //        speedTestSocket.startFixedUpload("http://ipv4.ikoula.testdebit.info/", 10000000, 10000)
-        speedTestSocket.startUploadRepeat(testServer, 20000000, 1000, 2000, object : IRepeatListener {
+        speedTestSocket.startUploadRepeat(testServer, 200000, 1000, 2000, object : IRepeatListener {
             override fun onCompletion(report: SpeedTestReport) {
                 // called when download/upload is complete
                 println("[COMPLETED] rate in octet/s : " + report.transferRateOctet)
@@ -182,7 +182,7 @@ public class InternetSpeedTestPlugin(internal var activity: Activity, internal v
 
     private fun testDownloadSpeed(testListener: TestListener, testServer: String) {
         // add a listener to wait for speedtest completion and progress
-        println("[FZ testDownloadSpeed")
+        println("[FZ NEW testDownloadSpeed")
         speedTestSocket.addSpeedTestListener(object : ISpeedTestListener {
             override fun onCompletion(report: SpeedTestReport) {
 //                // called when download/upload is complete
@@ -209,7 +209,7 @@ public class InternetSpeedTestPlugin(internal var activity: Activity, internal v
 
 
         speedTestSocket.startDownloadRepeat(testServer,
-                20000000, 1000, object : IRepeatListener {
+                200000, 1000, object : IRepeatListener {
             override fun onCompletion(report: SpeedTestReport) {
                 // called when download/upload is complete
                 println("[COMPLETED] rate in octet/s : " + report.transferRateOctet)
